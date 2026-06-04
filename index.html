@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proffit Study Pages &amp; Self-Test — 7th Edition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#13100D;--bg-2:#1B1712;--bg-3:#241D16;
+  --line:rgba(255,247,235,.11);--line-2:rgba(255,247,235,.18);
+  --text:#EFE7DB;--muted:#C2B5A1;--soft:#D6CAB7;--faint:#9C8E7C;
+  --amber:#E8A33D;--amber-2:#F2B85C;--amber-soft:rgba(232,163,61,.14);--amber-line:rgba(232,163,61,.45);
+  --emerald:#5BC892;--emerald-soft:rgba(91,200,146,.15);--emerald-line:rgba(91,200,146,.5);
+  --violet:#BFA3DE;--violet-soft:rgba(191,163,222,.15);--violet-line:rgba(191,163,222,.5);
+  --red:#E2705A;--red-soft:rgba(226,112,90,.16);
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"Hanken Grotesk",-apple-system,"Segoe UI",sans-serif;
+  --mono:"Spline Sans Mono",ui-monospace,Menlo,monospace;
+}
+html{background:var(--bg);scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh}
+
+/* ── Top bar ── */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(19,16,13,.94);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line-2);
+  padding:0 24px;
+}
+.topbar-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;gap:24px;
+  height:56px;
+}
+.logo{
+  font-family:var(--serif);font-weight:600;font-size:17px;
+  color:var(--text);white-space:nowrap;flex:none;
+}
+.logo em{color:var(--amber-2);font-style:italic}
+
+.nav{display:flex;gap:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex:1}
+.nav::-webkit-scrollbar{display:none}
+.nav a{
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;text-decoration:none;white-space:nowrap;
+  color:var(--muted);padding:8px 14px;border-radius:8px;
+  transition:background .15s,color .15s;
+  display:flex;align-items:center;gap:7px;
+}
+.nav a:hover{background:var(--bg-3);color:var(--text)}
+.nav a.on{background:var(--amber-soft);color:var(--amber-2);font-weight:600}
+.nav a .rn{
+  font-size:9px;background:var(--amber);color:#1A1206;
+  padding:2px 6px;border-radius:99px;font-weight:700;
+}
+.nav a.on .rn{background:var(--amber-2)}
+
+/* ── Hero ── */
+.hero{
+  max-width:1100px;margin:0 auto;
+  padding:56px 24px 32px;
+  text-align:center;
+}
+.hero-kicker{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--amber);margin-bottom:14px;
+}
+.hero h1{
+  font-family:var(--serif);font-weight:600;font-size:38px;
+  line-height:1.1;letter-spacing:-.02em;margin-bottom:12px;
+}
+.hero h1 em{font-style:italic;color:var(--amber-2)}
+.hero .sub{color:var(--muted);font-size:14.5px;max-width:540px;margin:0 auto}
+
+/* ── Section blocks ── */
+.sections{max-width:1100px;margin:0 auto;padding:8px 24px 80px}
+
+.sec-block{margin-bottom:40px;display:none}
+.sec-block.vis{display:block}
+
+.sec-head{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:16px;padding-bottom:10px;
+  border-bottom:1px solid var(--line-2);
+}
+.sec-num{
+  font-family:var(--mono);font-size:12px;font-weight:700;
+  color:#1A1206;background:var(--amber);
+  padding:4px 10px;border-radius:8px;
+  letter-spacing:.1em;
+}
+.sec-title{
+  font-family:var(--serif);font-size:20px;font-weight:600;
+  color:var(--soft);letter-spacing:-.01em;
+}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+
+.card{
+  background:var(--bg-2);border:1px solid var(--line-2);
+  border-radius:14px;padding:20px 22px;
+  text-decoration:none;color:var(--text);
+  transition:border-color .2s,transform .15s,box-shadow .2s;
+  display:flex;flex-direction:column;gap:8px;
+  position:relative;overflow:hidden;
+}
+.card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--amber),var(--amber-2));
+  opacity:0;transition:opacity .2s;
+}
+.card:hover{
+  border-color:var(--amber-line);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(0,0,0,.3);
+}
+.card:hover::before{opacity:1}
+
+.card .ch-num{
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--amber);
+}
+.card .ch-title{
+  font-family:var(--serif);font-size:17px;font-weight:600;
+  line-height:1.2;color:var(--text);
+}
+.card .ch-sub{font-size:12.5px;color:var(--muted);line-height:1.4}
+.card .arrow{
+  margin-top:auto;padding-top:6px;
+  font-family:var(--mono);font-size:11px;color:var(--amber-2);
+  display:flex;align-items:center;gap:6px;
+}
+.card:hover .arrow{color:var(--amber)}
+
+/* ── All view ── */
+.sec-block.all-view .sec-group{margin-bottom:28px}
+.sec-block.all-view .sec-group:last-child{margin-bottom:0}
+
+/* ── Responsive ── */
+@media(max-width:700px){
+  .topbar-inner{flex-wrap:wrap;height:auto;padding:12px 0}
+  .logo{width:100%;text-align:center}
+  .nav{width:100%;justify-content:center;padding-bottom:8px}
+  .hero h1{font-size:28px}
+  .cards{grid-template-columns:1fr}
+  .card{padding:16px 18px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="logo"><em>Proffit</em> 7th Ed</div>
+    <nav class="nav" id="nav">
+      <a href="#" data-sec="all" class="on"><span class="rn">All</span> Chapters</a>
+      <a href="#" data-sec="II"><span class="rn">II</span> Diagnosis &amp; Planning</a>
+      <a href="#" data-sec="III"><span class="rn">III</span> Biomechanics &amp; Appliances</a>
+      <a href="#" data-sec="IV"><span class="rn">IV</span> Preadolescent Treatment</a>
+      <a href="#" data-sec="V"><span class="rn">V</span> Comprehensive Treatment</a>
+      <a href="#" data-sec="VI"><span class="rn">VI</span> Finishing &amp; Retention</a>
+    </nav>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-kicker">Contemporary Orthodontics &middot; 7th Edition</div>
+  <h1>Study Pages &amp; <em>Self-Test</em></h1>
+  <p class="sub">Updated chapter summaries with 7th-edition changes color-coded, plus embedded self-test questions from previous SBO exams.</p>
+</div>
+
+<div class="sections" id="sections">
+
+  <!-- ALL VIEW -->
+  <div class="sec-block all-view vis" data-sec="all">
+
+    <div class="sec-group">
+      <div class="sec-head"><span class="sec-num">II</span><span class="sec-title">Diagnosis &amp; Treatment Planning</span></div>
+      <div class="cards">
+        <a class="card" href="ch7.html">
+          <span class="ch-num">Chapter 7</span>
+          <span class="ch-title">Orthodontic Treatment Planning</span>
+          <span class="ch-sub">From Problem List to Specific Plan</span>
+          <span class="arrow">Open study page &rarr;</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="sec-group">
+      <div class="sec-head"><span class="sec-num">III</span><span class="sec-title">Biomechanics, Mechanics &amp; Appliances</span></div>
+      <div class="cards">
+        <a class="card" href="ch8.html">
+          <span class="ch-num">Chapter 8</span>
+          <span class="ch-title">The Biologic Basis</span>
+          <span class="ch-sub">of Orthodontic Therapy</span>
+          <span class="arrow">Open study page &rarr;</span>
+        </a>
+        <a class="card" href="ch9.html">
+          <span class="ch-num">Chapter 9</span>
+          <span class="ch-title">Mechanical Principles</span>
+          <span class="ch-sub">in Orthodontic Force Control</span>
+          <span class="arrow">Open study page &rarr;</span>
+        </a>
+        <a class="card" href="ch10.html">
+          <span class="ch-num">Chapter 10</span>
+          <span class="ch-title">Contemporary Orthodontic Appliances</span>
+          <span class="ch-sub"></span>
+          <span class="arrow">Open study page &rarr;</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="sec-group">
+      <div class="sec-head"><span class="sec-num">IV</span><span class="sec-title">Treatment in Preadolescent Children</span></div>
+      <div class="cards">
+        <a class="card" href="ch11.html">
+          <span class="ch-num">Chapter 11</span>
+          <span class="ch-title">Moderate Nonskeletal Problems</span>
+          <span class="ch-sub">Preventive &amp; Interceptive Treatment</span>
+          <span class="arrow">Open study page &rarr;</span>
+        </a>
+        <a class="card" href="ch12.html">
+          <span class="ch-num">Chapter 12</span>
+          <span class="ch-title">Complex Nonskeletal Problems</span>
+          <span class="ch-sub">Preventive &amp; Interceptive Treatment</span>
+          <span class="arrow">Open study page &rarr;</span>
+        </a>
+        <a class="card" href="ch13.html">
+          <span class="ch-num">Chapter 13</span>
+          <span class="ch-title">Skeletal Transverse &amp; Class III</span>
+          <span class="ch-sub">Problems</span>
+          <span class="arrow">Open study page &rarr;</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="sec-group">
+      <div class="sec-head"><span class="sec-num">V</span><span class="sec-title">Comprehensive Orthodontic Treatment</span></div>
+      <div class="cards">
+        <a class="card" href="ch14.html">
+          <span class="ch-num">Chapter 14</span>
+          <span class="ch-title">Growth Modification</span>
+          <span class="ch-sub">Class II, Open/Deep Bite &amp; Multidimensional Problems</span>
+          <span class="arrow">Open study page &rarr;</span>
+        </a>
+        <a class="card" href="ch15.html">
+          <span class="ch-num">Chapter 15</span>
+          <span class="ch-title">Alignment &amp; Vertical Problems</span>
+          <span class="ch-sub">Comprehensive Treatment in Adolescents</span>
+          <span class="arrow">Open study page &rarr;</span>
+        </a>
+        <a class="card" href="ch16.html">
+          <span class="ch-num">Chapter 16</span>
+          <span class="ch-title">Space Closure &amp; Class II / III Correction</span>
+          <span class="ch-sub">Comprehensive Treatment in Adolescents</span>
+          <span class="arrow">Open study page &rarr;</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="sec-group">
+      <div class="sec-head"><span class="sec-num">VI</span><span class="sec-title">Finishing &amp; Retention</span></div>
+      <div class="cards">
+        <a class="card" href="ch17.html">
+          <span class="ch-num">Chapter 17</span>
+          <span class="ch-title">Comprehensive Treatment: Finishing</span>
+          <span class="ch-sub"></span>
+          <span class="arrow">Open study page &rarr;</span>
+        </a>
+        <a class="card" href="ch18.html">
+          <span class="ch-num">Chapter 18</span>
+          <span class="ch-title">Retention</span>
+          <span class="ch-sub"></span>
+          <span class="arrow">Open study page &rarr;</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Section II -->
+  <div class="sec-block" data-sec="II">
+    <div class="sec-head"><span class="sec-num">II</span><span class="sec-title">Diagnosis &amp; Treatment Planning</span></div>
+    <div class="cards">
+      <a class="card" href="ch7.html">
+        <span class="ch-num">Chapter 7</span>
+        <span class="ch-title">Orthodontic Treatment Planning</span>
+        <span class="ch-sub">From Problem List to Specific Plan</span>
+        <span class="arrow">Open study page &rarr;</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Section III -->
+  <div class="sec-block" data-sec="III">
+    <div class="sec-head"><span class="sec-num">III</span><span class="sec-title">Biomechanics, Mechanics &amp; Appliances</span></div>
+    <div class="cards">
+      <a class="card" href="ch8.html">
+        <span class="ch-num">Chapter 8</span>
+        <span class="ch-title">The Biologic Basis</span>
+        <span class="ch-sub">of Orthodontic Therapy</span>
+        <span class="arrow">Open study page &rarr;</span>
+      </a>
+      <a class="card" href="ch9.html">
+        <span class="ch-num">Chapter 9</span>
+        <span class="ch-title">Mechanical Principles</span>
+        <span class="ch-sub">in Orthodontic Force Control</span>
+        <span class="arrow">Open study page &rarr;</span>
+      </a>
+      <a class="card" href="ch10.html">
+        <span class="ch-num">Chapter 10</span>
+        <span class="ch-title">Contemporary Orthodontic Appliances</span>
+        <span class="ch-sub"></span>
+        <span class="arrow">Open study page &rarr;</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Section IV -->
+  <div class="sec-block" data-sec="IV">
+    <div class="sec-head"><span class="sec-num">IV</span><span class="sec-title">Treatment in Preadolescent Children</span></div>
+    <div class="cards">
+      <a class="card" href="ch11.html">
+        <span class="ch-num">Chapter 11</span>
+        <span class="ch-title">Moderate Nonskeletal Problems</span>
+        <span class="ch-sub">Preventive &amp; Interceptive Treatment</span>
+        <span class="arrow">Open study page &rarr;</span>
+      </a>
+      <a class="card" href="ch12.html">
+        <span class="ch-num">Chapter 12</span>
+        <span class="ch-title">Complex Nonskeletal Problems</span>
+        <span class="ch-sub">Preventive &amp; Interceptive Treatment</span>
+        <span class="arrow">Open study page &rarr;</span>
+      </a>
+      <a class="card" href="ch13.html">
+        <span class="ch-num">Chapter 13</span>
+        <span class="ch-title">Skeletal Transverse &amp; Class III</span>
+        <span class="ch-sub">Problems</span>
+        <span class="arrow">Open study page &rarr;</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Section V -->
+  <div class="sec-block" data-sec="V">
+    <div class="sec-head"><span class="sec-num">V</span><span class="sec-title">Comprehensive Orthodontic Treatment</span></div>
+    <div class="cards">
+      <a class="card" href="ch14.html">
+        <span class="ch-num">Chapter 14</span>
+        <span class="ch-title">Growth Modification</span>
+        <span class="ch-sub">Class II, Open/Deep Bite &amp; Multidimensional Problems</span>
+        <span class="arrow">Open study page &rarr;</span>
+      </a>
+      <a class="card" href="ch15.html">
+        <span class="ch-num">Chapter 15</span>
+        <span class="ch-title">Alignment &amp; Vertical Problems</span>
+        <span class="ch-sub">Comprehensive Treatment in Adolescents</span>
+        <span class="arrow">Open study page &rarr;</span>
+      </a>
+      <a class="card" href="ch16.html">
+        <span class="ch-num">Chapter 16</span>
+        <span class="ch-title">Space Closure &amp; Class II / III Correction</span>
+        <span class="ch-sub">Comprehensive Treatment in Adolescents</span>
+        <span class="arrow">Open study page &rarr;</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Section VI -->
+  <div class="sec-block" data-sec="VI">
+    <div class="sec-head"><span class="sec-num">VI</span><span class="sec-title">Finishing &amp; Retention</span></div>
+    <div class="cards">
+      <a class="card" href="ch17.html">
+        <span class="ch-num">Chapter 17</span>
+        <span class="ch-title">Comprehensive Treatment: Finishing</span>
+        <span class="ch-sub"></span>
+        <span class="arrow">Open study page &rarr;</span>
+      </a>
+      <a class="card" href="ch18.html">
+        <span class="ch-num">Chapter 18</span>
+        <span class="ch-title">Retention</span>
+        <span class="ch-sub"></span>
+        <span class="arrow">Open study page &rarr;</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const nav = document.getElementById('nav');
+const blocks = document.querySelectorAll('.sec-block');
+
+nav.addEventListener('click', e => {
+  const a = e.target.closest('a[data-sec]');
+  if (!a) return;
+  e.preventDefault();
+  const sec = a.dataset.sec;
+  nav.querySelectorAll('a').forEach(x => x.classList.toggle('on', x === a));
+  blocks.forEach(b => b.classList.toggle('vis', b.dataset.sec === sec));
+  window.scrollTo({top: 0, behavior: 'smooth'});
+});
+</script>
+</body>
+</html>
