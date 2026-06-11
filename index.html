@@ -150,6 +150,26 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:
   .card{padding:16px 18px}
 }
 .card.soon{opacity:.5;cursor:default;pointer-events:none}.card.soon::before{display:none}.card.soon .arrow{color:var(--faint)}</style>
+<style id="sp-search-css">
+.sps-box{max-width:560px;margin:24px auto 0;display:flex;align-items:center;gap:10px;background:var(--bg-2);border:1px solid var(--line-2);border-radius:99px;padding:12px 19px;transition:border-color .15s}
+.sps-box:focus-within{border-color:var(--amber-line)}
+.sps-box svg{color:var(--faint);flex:none}
+#sps-in{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:var(--sans);font-size:14.5px;min-width:0}
+#sps-in::placeholder{color:var(--faint)}
+#sps-in::-webkit-search-cancel-button{display:none}
+.sps-key{font-family:var(--mono);font-size:10px;color:var(--faint);border:1px solid var(--line-2);border-radius:6px;padding:2px 7px;flex:none}
+#sps-out{max-width:760px;margin:20px auto 0;text-align:left;padding:0 4px}
+.sps-stat{font-family:var(--mono);font-size:11px;color:var(--faint);margin:0 0 14px;letter-spacing:.06em}
+.sps-ch{margin:0 0 22px}
+.sps-cht{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin:0 0 8px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;text-decoration:none}
+a.sps-cht:hover{color:var(--amber-2)}
+.sps-cht .n{color:var(--faint);text-transform:none;letter-spacing:0;font-size:10.5px}
+.sps-hit{display:block;text-decoration:none;color:var(--soft);font-size:13.2px;line-height:1.55;background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:6px 0;transition:border-color .15s,background .15s}
+.sps-hit:hover{border-color:var(--amber-line);background:var(--bg-3)}
+.sps-hit .sec{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:3px}
+.sps-hit b{color:var(--amber-2);font-weight:600;background:var(--amber-soft);border-radius:3px;padding:0 2px}
+body.sps-on .sections{display:none}
+</style>
 </head>
 <body>
 
@@ -173,6 +193,14 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:
   <div class="hero-kicker">Contemporary Orthodontics &middot; 7th Edition</div>
   <h1>Study Pages &amp; <em>Self-Test</em></h1>
   <p class="sub">Updated chapter summaries with 7th-edition changes color-coded, plus embedded self-test questions from previous SBO exams.</p>
+  <div id="sp-search">
+    <div class="sps-box">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="sps-in" type="search" placeholder="Search all chapters — Bolton, supracrestal fibers, 35-60 g…" autocomplete="off" aria-label="Search all chapters">
+      <span class="sps-key">/</span>
+    </div>
+    <div id="sps-out"></div>
+  </div>
 </div>
 
 <div class="sections" id="sections">
@@ -552,6 +580,71 @@ nav.addEventListener('click', e => {
   blocks.forEach(b => b.classList.toggle('vis', b.dataset.sec === sec));
   window.scrollTo({top: 0, behavior: 'smooth'});
 });
+</script>
+<script id="sp-search-js">
+(function(){
+var inp=document.getElementById('sps-in'),out=document.getElementById('sps-out');
+if(!inp)return;
+var IDX=null,loading=null;
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function rxEsc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function ensureIdx(){
+  if(IDX)return Promise.resolve(IDX);
+  if(!loading)loading=fetch('search_index.json').then(function(r){return r.json();}).then(function(j){IDX=j;return j;})
+    .catch(function(){loading=null;out.innerHTML='<p class="sps-stat">Could not load the search index — are you on the live site?</p>';throw 0;});
+  return loading;
+}
+function snippet(text,words){
+  var tl=text.toLowerCase(),pos=-1,i;
+  for(i=0;i<words.length;i++){var p=tl.indexOf(words[i]);if(p>-1&&(pos===-1||p<pos))pos=p;}
+  if(pos<0)pos=0;
+  var a=Math.max(0,pos-65),b=Math.min(text.length,pos+95);
+  var s=(a>0?'…':'')+esc(text.slice(a,b))+(b<text.length?'…':'');
+  var rx=new RegExp('('+words.map(rxEsc).join('|')+')','gi');
+  return s.replace(rx,'<b>$1</b>');
+}
+function run(q){
+  var words=q.toLowerCase().split(/\s+/).filter(Boolean);
+  if(!words.length)return;
+  var perCh={},order=[],total=0,i,j;
+  for(i=0;i<IDX.blocks.length;i++){
+    var blk=IDX.blocks[i],tl=blk[2].toLowerCase(),ok=true;
+    for(j=0;j<words.length;j++){if(tl.indexOf(words[j])<0){ok=false;break;}}
+    if(!ok)continue;
+    total++;
+    if(!perCh[blk[0]]){perCh[blk[0]]=[];order.push(blk[0]);}
+    perCh[blk[0]].push(blk);
+  }
+  if(!total){out.innerHTML='<p class="sps-stat">No matches across the 22 chapters.</p>';return;}
+  var h='<p class="sps-stat">'+total+' match'+(total===1?'':'es')+' · '+order.length+' chapter'+(order.length===1?'':'s')+'</p>';
+  var href;
+  for(i=0;i<order.length;i++){
+    var ch=order[i],hits=perCh[ch];
+    href='ch'+ch+'.html#q='+encodeURIComponent(q);
+    h+='<div class="sps-ch"><a class="sps-cht" href="'+href+'">Chapter '+ch+' — '+esc(IDX.titles[String(ch)]||'')+'<span class="n">'+hits.length+' match'+(hits.length===1?'':'es')+' →</span></a>';
+    for(j=0;j<Math.min(3,hits.length);j++){
+      h+='<a class="sps-hit" href="'+href+'">'+(hits[j][1]?'<span class="sec">'+esc(hits[j][1])+'</span>':'')+snippet(hits[j][2],words)+'</a>';
+    }
+    h+='</div>';
+  }
+  out.innerHTML=h;
+}
+var t=null;
+inp.addEventListener('input',function(){
+  clearTimeout(t);
+  t=setTimeout(function(){
+    var q=inp.value.trim();
+    if(q.length<2){out.innerHTML='';document.body.classList.remove('sps-on');return;}
+    document.body.classList.add('sps-on');
+    ensureIdx().then(function(){run(q);});
+  },220);
+});
+inp.addEventListener('focus',function(){ensureIdx().catch(function(){});});
+inp.addEventListener('keydown',function(e){if(e.key==='Escape'){inp.value='';out.innerHTML='';document.body.classList.remove('sps-on');inp.blur();}});
+document.addEventListener('keydown',function(e){
+  if(e.key==='/'&&document.activeElement!==inp){e.preventDefault();inp.focus();}
+});
+})();
 </script>
 </body>
 </html>
