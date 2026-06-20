@@ -1,0 +1,156 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proffit &middot; Most &harr; Least &mdash; Rankings Drill</title>
+<style>
+:root{--bg:#13100D;--bg-2:#1B1712;--bg-3:#241D16;--line:rgba(255,247,235,.11);--line-2:rgba(255,247,235,.18);
+--text:#EFE7DB;--muted:#C2B5A1;--soft:#D6CAB7;--faint:#9C8E7C;--amber:#E8A33D;--amber-2:#F2B85C;
+--amber-soft:rgba(232,163,61,.14);--amber-line:rgba(232,163,61,.45);--emerald:#5BC892;--emerald-soft:rgba(91,200,146,.13);
+--red:#E5736B;--red-soft:rgba(229,115,107,.13);--blue:#7FC8E8;
+--sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+--mono:ui-monospace,"SF Mono",Consolas,monospace;--serif:"Iowan Old Style",Georgia,serif;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#171310,#13100D);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.5;padding-bottom:80px}
+a{color:var(--amber-2);text-decoration:none}
+header.bar{position:sticky;top:0;z-index:20;background:rgba(19,16,13,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:10px 18px}
+.barrow{display:flex;gap:12px;align-items:center;flex-wrap:wrap;max-width:1000px;margin:0 auto}
+.home{color:var(--muted);font-size:13px;border:1px solid var(--line-2);padding:5px 11px;border-radius:8px}
+.home:hover{color:var(--amber-2);border-color:var(--amber-line)}
+h1{font-size:15px;margin:0;font-weight:600}h1 b{color:var(--amber)}
+.modes{margin-left:auto;display:flex;gap:6px;background:var(--bg-3);border:1px solid var(--line-2);border-radius:999px;padding:3px}
+.mbtn{background:none;border:none;color:var(--muted);font-size:12.5px;padding:5px 14px;border-radius:999px;cursor:pointer;font-family:var(--sans);transition:.12s}
+.mbtn.on{background:var(--amber-soft);color:var(--amber-2);font-weight:600}
+.wrap{max-width:1000px;margin:0 auto;padding:18px}
+.lead{color:var(--muted);font-size:13.5px;margin:4px 0 12px}.lead b{color:var(--soft)}
+.scorebar{display:inline-flex;gap:14px;align-items:center;background:var(--bg-3);border:1px solid var(--line-2);border-radius:999px;padding:7px 16px;font-size:13px;color:var(--muted);margin-bottom:14px}
+.scorebar b{color:var(--amber-2);font-family:var(--mono)}
+#deck{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.dcard{background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column}
+.dcard.solved{border-color:var(--emerald);box-shadow:0 0 0 1px rgba(91,200,146,.25)}
+.dhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
+.cat{font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--faint);font-weight:600}
+.qt{font-size:10px;letter-spacing:.7px;font-weight:700;color:var(--amber);background:var(--amber-soft);border:1px solid var(--amber-line);border-radius:5px;padding:2px 7px}
+.qt.mc{color:var(--blue);background:rgba(127,200,232,.1);border-color:rgba(127,200,232,.4)}
+.q{font-size:15.5px;color:var(--text);margin-bottom:10px;font-weight:600}
+.q .sub{font-size:11.5px;color:var(--faint);font-weight:400;font-family:var(--mono);margin-left:4px}
+.rchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:11px}
+.rchip{position:relative;display:inline-flex;align-items:center;gap:7px;background:var(--bg-3);border:1px solid var(--line-2);color:var(--soft);border-radius:10px;padding:9px 13px;font-size:13.5px;cursor:pointer;font-family:var(--sans);transition:.12s;text-align:left}
+.rchip:hover{border-color:var(--amber-line)}
+.rchip.picked{background:var(--amber-soft);border-color:var(--amber-line);color:var(--amber-2)}
+.rchip.ok{background:var(--emerald-soft);border-color:var(--emerald);color:#bfe9cf;cursor:default}
+.rchip.no{background:var(--red-soft);border-color:var(--red);color:#f0bdb8;cursor:default}
+.bdg{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;border-radius:50%;background:var(--amber);color:#1A0A06;font-size:11px;font-weight:700;font-family:var(--mono)}
+.rchip.ok .bdg{background:var(--emerald);color:#0c1a12}.rchip.no .bdg{background:var(--red);color:#1a0a08}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.act{background:var(--bg-3);border:1px solid var(--line-2);color:var(--soft);border-radius:8px;padding:7px 15px;font-size:13px;cursor:pointer;font-family:var(--sans);transition:.12s}
+.act:hover{border-color:var(--amber-line);color:var(--amber-2)}
+.act.primary{background:var(--amber);border-color:var(--amber);color:#1A0A06;font-weight:600}
+.act.primary:hover{background:var(--amber-2);color:#1A0A06}
+.act:disabled,.act.dis{opacity:.38;cursor:default;border-color:var(--line-2);color:var(--faint)}
+.act.dis:hover{border-color:var(--line-2);color:var(--faint)}
+.ans{display:none;margin-top:11px;border-top:1px solid var(--line);padding-top:10px;animation:fade .2s ease}
+.ans.show{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
+ol.rankans{list-style:none;counter-reset:r;margin:0;padding:0}
+ol.rankans li{counter-increment:r;display:flex;align-items:baseline;gap:9px;padding:5px 0;border-top:1px solid var(--line);font-size:14px}
+ol.rankans li:first-child{border-top:none}
+ol.rankans li::before{content:counter(r);font-family:var(--mono);font-size:11px;color:var(--amber);background:var(--amber-soft);border-radius:5px;padding:1px 6px;flex:0 0 auto}
+.rt{color:var(--text);flex:1}.rn{color:var(--faint);font-family:var(--mono);font-size:11.5px}
+.rans{font-size:14.5px;color:var(--soft);line-height:1.55}.rans b{color:var(--amber-2);font-weight:600}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:9px}
+.src{font-size:11px;color:var(--faint);font-family:var(--mono)}
+.tg{font-size:10px;font-weight:700;letter-spacing:.5px;border-radius:5px;padding:2px 7px;text-transform:uppercase}
+.tg.pf{color:var(--emerald);background:var(--emerald-soft);border:1px solid rgba(91,200,146,.4)}
+.tg.lit{color:var(--blue);background:rgba(127,200,232,.1);border:1px solid rgba(127,200,232,.4)}
+.tg.ap{color:var(--amber-2);background:var(--amber-soft);border:1px solid var(--amber-line)}
+.tg.cl{color:var(--muted);background:var(--bg-3);border:1px solid var(--line-2)}
+.hook{margin-top:8px;font-size:13px;font-style:italic;color:var(--amber-2);line-height:1.45}
+.hook::before{content:"\1F9E0  ";font-style:normal}
+.note{color:var(--faint);font-size:12px;margin-top:22px;text-align:center;line-height:1.6}
+.note .tg{margin:0 2px}
+@media(max-width:560px){#deck{grid-template-columns:1fr}}
+</style></head><body>
+<header class="bar">
+ <div class="barrow"><a class="home" href="https://wan292.github.io/proffit-study-pages/index.html">&larr; All Chapters</a>
+ <h1>Proffit &middot; <b>Most &harr; Least</b></h1>
+ <div class="modes"><button class="mbtn on" data-m="drill">Drill</button><button class="mbtn" data-m="study">Study</button></div></div>
+</header>
+<div class="wrap">
+ <p class="lead">The <b>"most common / least common"</b> facts that recur every exam &mdash; drilled as rankings. In <b>Drill</b>, tap the options in order (most&nbsp;first) then Check. In <b>Study</b>, just read the answers.</p>
+ <div class="scorebar" id="scorebar">Ranked <b id="solved">0</b>/<span id="total">0</span> &middot; streak <b id="streak">0</b></div>
+ <div id="deck"></div>
+ <p class="note">Proffit 7th ed. <span class="tg pf">Proffit</span> = exam-safe book facts &middot; <span class="tg lit">trauma lit</span> / <span class="tg ap">approx</span> / <span class="tg cl">classic</span> = numbers that vary by source &mdash; know the <i>order</i>, hold the figures loosely.</p>
+</div>
+<script>
+const CARDS=[
+ {kind:'rank',cat:'Teeth',q:'Teeth most often traumatised',sub:'most → least',
+  items:[{t:'Maxillary central incisor',n:'≈80%'},{t:'Maxillary lateral incisor',n:'≈15%'},{t:'Lower incisors',n:'the small remainder'}],
+  src:'Proffit Ch 11 · % from trauma literature',tag:'lit',hook:'The front-line tooth takes the hit.'},
+ {kind:'rank',cat:'Wires',q:'Resistance to sliding (friction) by wire',sub:'least → most',
+  items:[{t:'Stainless steel',n:'lowest'},{t:'NiTi',n:'middle'},{t:'β-titanium (TMA)',n:'highest'}],
+  src:'Proffit Ch 9 — β-Ti (80% Ti) > NiTi (50%) > steel',tag:'proffit',hook:'More titanium = more grab (β-Ti can cold-weld to steel).'},
+ {kind:'rank',cat:'Epidemiology',q:'Malocclusion — most common class',sub:'most → least',
+  items:[{t:'Class I',n:'the majority'},{t:'Class II',n:'~15–20%'},{t:'Class III',n:'~1%'}],
+  src:'Proffit Ch 1 epidemiology · figures approximate',tag:'approx',hook:'I is the crowd, III is the rarity.'},
+ {kind:'rank',cat:'Teeth',q:'Most commonly impacted teeth',sub:'most → least',
+  items:[{t:'Third molars',n:'#1'},{t:'Maxillary canine',n:'the key ortho one'},{t:'Mandibular 2nd premolar',n:'then these'}],
+  src:'Classic teaching · Proffit emphasises the maxillary canine',tag:'classic',hook:'After the wisdoms, the upper canine is the famous one.'},
+ {kind:'reveal',cat:'Teeth',q:'Most commonly congenitally missing teeth?',
+  a:'<b>3rd molars</b> overall. Excluding those → <b>maxillary lateral incisors</b> &amp; <b>mandibular 2nd premolars</b> (the top two), then maxillary 2nd premolars.',
+  src:'Proffit Ch 5 &amp; 11',tag:'proffit',hook:'Ch 5 rule: missing tooth → almost always a 3rd molar; missing incisor → the lateral; missing premolar → the 2nd.'},
+ {kind:'reveal',cat:'Teeth',q:'Most common supernumerary tooth?',
+  a:'<b>Mesiodens</b> — in the maxillary midline. <b>90%</b> of all supernumeraries sit in the anterior maxilla.',
+  src:'Proffit Ch 5 &amp; 11',tag:'proffit',hook:'"Meso-dens" = the midline tooth.'},
+ {kind:'reveal',cat:'Growth',q:'Most common cause of facial asymmetry?',
+  a:'The <b>mandible</b> (a condylar / growth problem) — involved in <b>85–90%</b> of facial-asymmetry cases.',
+  src:'Proffit Ch 14',tag:'proffit',hook:'Asymmetry lives in the lower jaw.'},
+ {kind:'reveal',cat:'Growth',q:'Most common cranial nerve injured in birth trauma?',
+  a:'The <b>facial nerve (CN VII)</b> — often from forceps or compression against the maternal sacrum.',
+  src:'Proffit Ch 5',tag:'proffit',hook:'Forceps pinch the 7th.'},
+ {kind:'reveal',cat:'Trauma',q:'Incisor-trauma prevalence, ages 12–18?',
+  a:'<b>~15–18%</b> of youth have permanent-incisor trauma — and <b>most are only minor enamel chips</b>. Re-injury risk is <b>8.4×</b> with prior trauma before age 9.',
+  src:'Proffit Ch 1',tag:'proffit',hook:'~1 in 6, mostly just chips.'},
+ {kind:'reveal',cat:'Teeth',q:'Missing primary (baby) teeth — how often & which?',
+  a:'<b>Rare: 0.5–0.9%</b>. When it happens it is usually the <b>maxillary lateral incisor</b> (and the permanent one is then often missing too).',
+  src:'Proffit Ch 11',tag:'proffit',hook:'Baby teeth almost never no-show.'}
+];
+const deck=document.getElementById('deck');
+let mode='drill';const solvedSet=new Set();let streak=0;
+const rankN=CARDS.filter(c=>c.kind==='rank').length;
+document.getElementById('total').textContent=rankN;
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function tagHtml(t){return t==='proffit'?'<span class="tg pf">Proffit</span>':t==='lit'?'<span class="tg lit">trauma lit</span>':t==='approx'?'<span class="tg ap">approx</span>':t==='classic'?'<span class="tg cl">classic</span>':'';}
+function btn(label,cls,fn){const b=document.createElement('button');b.className='act '+(cls||'');b.textContent=label;b.onclick=fn;return b;}
+function updateScore(){document.getElementById('solved').textContent=solvedSet.size;document.getElementById('streak').textContent=streak;document.getElementById('scorebar').style.display=mode==='drill'?'':'none';}
+function buildRank(card,c,ci){
+ const correct=c.items;const display=mode==='study'?correct.map((it,i)=>({it,idx:i})):shuffle(correct.map((it,i)=>({it,idx:i})));
+ const picks=[];let checked=false;
+ card.innerHTML='<div class="dhead"><span class="cat">'+c.cat+'</span><span class="qt">RANK</span></div><div class="q">'+c.q+' <span class="sub">'+c.sub+'</span></div><div class="rchips"></div><div class="actions"></div><div class="ans"></div>';
+ const row=card.querySelector('.rchips'),acts=card.querySelector('.actions'),ans=card.querySelector('.ans');
+ function drawAns(){ans.innerHTML='<ol class="rankans">'+correct.map(it=>'<li><span class="rt">'+it.t+'</span><span class="rn">'+(it.n||'')+'</span></li>').join('')+'</ol><div class="meta"><span class="src">'+c.src+'</span> '+tagHtml(c.tag)+'</div><div class="hook">'+c.hook+'</div>';ans.classList.add('show');}
+ function chips(){row.innerHTML='';display.forEach(d=>{
+   const chip=document.createElement('button');chip.className='rchip';
+   const pk=picks.indexOf(d.idx);const badge=pk>=0?(pk+1):'';
+   chip.innerHTML=(badge?'<span class="bdg">'+badge+'</span>':'')+'<span>'+d.it.t+'</span>';
+   if(checked){chip.classList.add(picks.indexOf(d.idx)===d.idx?'ok':'no');}
+   else if(pk>=0)chip.classList.add('picked');
+   if(mode==='drill'&&!checked)chip.onclick=()=>{const at=picks.indexOf(d.idx);if(at>=0)picks.splice(at,1);else picks.push(d.idx);chips();actions();};
+   row.appendChild(chip);});}
+ function actions(){acts.innerHTML='';if(mode!=='drill')return;
+   if(checked){acts.appendChild(btn('Try again','',()=>{picks.length=0;checked=false;ans.classList.remove('show');chips();actions();}));return;}
+   const ok=picks.length===correct.length;
+   const chk=btn('Check',ok?'primary':'primary dis',()=>{checked=true;const right=picks.every((p,i)=>p===i);if(right){if(!solvedSet.has(ci)){solvedSet.add(ci);}streak++;card.classList.add('solved');}else{streak=0;}chips();actions();drawAns();updateScore();});
+   chk.disabled=!ok;acts.appendChild(chk);
+   if(picks.length)acts.appendChild(btn('Reset','',()=>{picks.length=0;chips();actions();}));}
+ if(mode==='study'){row.style.display='none';drawAns();}else{chips();actions();}
+}
+function buildReveal(card,c){
+ card.innerHTML='<div class="dhead"><span class="cat">'+c.cat+'</span><span class="qt mc">MOST COMMON</span></div><div class="q">'+c.q+'</div><div class="actions"></div><div class="ans"></div>';
+ const ans=card.querySelector('.ans'),acts=card.querySelector('.actions');
+ function drawAns(){ans.innerHTML='<div class="rans">'+c.a+'</div><div class="meta"><span class="src">'+c.src+'</span> '+tagHtml(c.tag)+'</div><div class="hook">'+c.hook+'</div>';ans.classList.add('show');}
+ if(mode==='study')drawAns();else acts.appendChild(btn('Reveal','primary',()=>{acts.innerHTML='';drawAns();}));
+}
+function render(){deck.innerHTML='';CARDS.forEach((c,ci)=>{const card=document.createElement('section');card.className='dcard';if(solvedSet.has(ci))card.classList.add('solved');c.kind==='rank'?buildRank(card,c,ci):buildReveal(card,c);deck.appendChild(card);});updateScore();}
+document.querySelectorAll('.mbtn').forEach(b=>b.onclick=()=>{document.querySelectorAll('.mbtn').forEach(x=>x.classList.toggle('on',x===b));mode=b.dataset.m;render();});
+render();
+</script>
+</body></html>
