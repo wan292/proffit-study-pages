@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prevalences &amp; Epidemiology — Proffit 7th</title>
+<style>
+  :root{
+    --bg:#1a1410; --card:#241c16; --card2:#2b211a; --line:#3a2c20;
+    --txt:#ece3d6; --muted:#b6a690; --amber:#f0b95e; --amber2:#e0a44c;
+    --green:#9ccb86; --red:#ec8a6a; --redbg:#2f1c15; --greenbg:#1d2417;
+    --chip:#37291d;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    line-height:1.5;-webkit-text-size-adjust:100%}
+  .wrap{max-width:840px;margin:0 auto;padding:22px 16px 80px}
+  .navbar{position:sticky;top:0;z-index:30;background:rgba(26,20,16,.96);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    padding:9px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .navbar a.home{color:var(--muted);font-size:13px;border:1px solid #4a3826;
+    padding:5px 11px;border-radius:8px;text-decoration:none}
+  .navbar a.home:hover{color:var(--amber);border-color:var(--amber)}
+  .navbar .nbt{font-size:13px;color:var(--amber2);font-weight:600}
+  header{text-align:center;margin-bottom:8px}
+  h1{font-size:1.55rem;margin:.2em 0 .1em;color:var(--amber);letter-spacing:.3px}
+  .sub{color:var(--muted);font-size:.9rem;margin-bottom:4px}
+  .src-note{font-size:.78rem;color:var(--muted);font-style:italic}
+  h2{font-size:1.05rem;color:var(--amber2);margin:0 0 10px;
+    border-bottom:1px solid var(--line);padding-bottom:6px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:16px 16px 8px;margin:16px 0;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+  .big{background:linear-gradient(150deg,#2c2118,#241b14);border-color:#4a3826}
+  ul{margin:6px 0 12px;padding-left:0;list-style:none}
+  li{margin:7px 0;padding-left:18px;position:relative}
+  li::before{content:"•";color:var(--amber);position:absolute;left:2px;top:-1px}
+  .n{color:var(--amber);font-weight:700}
+  .chip{display:inline-block;background:var(--chip);color:var(--muted);
+    font-size:.7rem;border-radius:20px;padding:1px 8px;margin-left:5px;
+    vertical-align:middle;white-space:nowrap}
+  .hook{color:var(--green);font-size:.86rem;margin:2px 0 12px 18px;font-style:italic}
+  .hook::before{content:"🧠 ";font-style:normal}
+  table{width:100%;border-collapse:collapse;margin:6px 0 10px;font-size:.9rem}
+  .tscroll{overflow-x:auto}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:var(--card2);color:var(--amber2);font-weight:600}
+  td:first-child{text-align:left;color:var(--txt)}
+  .up{color:var(--red)} .down{color:var(--green)}
+  .trap{background:var(--redbg);border:1px solid #6a3a28;border-radius:12px;
+    padding:14px 16px 6px;margin:18px 0}
+  .trap h2{color:var(--red);border-color:#6a3a28}
+  .trap li::before{content:"⚠";color:var(--red);font-size:.85rem}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:4px 0 12px}
+  .stat{background:var(--card2);border-radius:10px;padding:10px 8px;text-align:center}
+  .stat .v{font-size:1.5rem;font-weight:800;color:var(--amber);display:block}
+  .stat .l{font-size:.74rem;color:var(--muted)}
+  @media(max-width:520px){.grid{grid-template-columns:1fr 1fr}h1{font-size:1.3rem}}
+</style>
+</head>
+<body>
+<div class="navbar">
+  <a class="home" href="https://wan292.github.io/proffit-study-pages/index.html" target="_blank">← All Chapters</a>
+  <span class="nbt">Prevalences &amp; Epidemiology</span>
+</div>
+<div class="wrap">
+<header>
+  <h1>Prevalences &amp; Epidemiology</h1>
+  <div class="sub">High-yield numbers · <b>Proffit 7th ed.</b> · Ch 1 (NHANES III, US) + scattered</div>
+  <div class="src-note">All figures verified against Proffit; chapter / figure tagged on each. Cross-check ready.</div>
+</header>
+
+<!-- BIG PICTURE -->
+<div class="card big">
+  <h2>The Big Picture — who has malocclusion?</h2>
+  <div class="grid">
+    <div class="stat"><span class="v">~⅓</span><span class="l">Normal occlusion (35%)</span></div>
+    <div class="stat"><span class="v">~⅔</span><span class="l">Malocclusion (65%)</span></div>
+    <div class="stat"><span class="v">≤5%</span><span class="l">have a <i>known</i> cause</span></div>
+  </div>
+  <ul>
+    <li>Only about <span class="n">one-third</span> of the US population has normal occlusion; <span class="n">two-thirds</span> have some malocclusion. <span class="chip">Ch5 Fig 5.1</span></li>
+    <li>Of those with malocclusion, <span class="n">not more than 5%</span> have a <b>specific known cause</b> — the rest are complex inherited + environmental. <span class="chip">Ch5 Fig 5.1</span></li>
+    <li>Angle classes (US children/youth): <b>Class I / normal</b> <span class="n">30+%</span>, <b>Class II</b> <span class="n">~15–20+%</span>, <b>Class III</b> <span class="n">&lt;~5%</span>. <span class="chip">Ch1 p8</span></li>
+  </ul>
+  <div class="hook">"<b>1/3, 2/3, 5%</b>" — a third are fine, two-thirds aren't, and only a tiny slice have a cause we can name.</div>
+</div>
+
+<!-- BY AGE TABLE -->
+<div class="card">
+  <h2>★ By age — childhood → adult (the one you asked for)</h2>
+  <div class="tscroll">
+  <table>
+    <tr><th>Trait</th><th>Children<br>8–11</th><th>Youth<br>12–17</th><th>Adults<br>18–50</th><th>Trend</th></tr>
+    <tr><td>Class II — overjet ≥5 mm</td><td class="n">22%</td><td class="n">13%</td><td class="n">9%</td><td class="down">↓ falls</td></tr>
+    <tr><td>Class III / negative overjet</td><td>low</td><td>rising</td><td>highest</td><td class="up">↑ rises</td></tr>
+    <tr><td>Posterior crossbite</td><td class="n">~7%</td><td class="n">8%</td><td class="n">9%</td><td class="up">↑ slowly</td></tr>
+    <tr><td>Midline diastema &gt;2 mm</td><td class="n">26%</td><td class="n">&gt;6%</td><td class="n">&gt;6%</td><td class="down">↓ closes</td></tr>
+    <tr><td>Well-aligned incisors</td><td class="n">~half</td><td>less</td><td>upper stable,<br>lower worse</td><td class="up">↑ crowding</td></tr>
+  </table>
+  </div>
+  <ul>
+    <li><b>Why Class II falls &amp; Class III rises with age:</b> the mandible grows more than the maxilla after childhood. <span class="chip">Ch1 p7</span></li>
+  </ul>
+  <div class="hook">Children = <b>"22 / 26 / 7"</b> → Class II <b>22%</b>, diastema <b>26%</b>, crossbite <b>7%</b>.</div>
+</div>
+
+<!-- CROWDING -->
+<div class="card">
+  <h2>Crowding &amp; incisor alignment</h2>
+  <ul>
+    <li>Age 8–11: <span class="n">just over half</span> of US children have well-aligned incisors. <span class="chip">Ch1 p6</span></li>
+    <li>Moderate (usually crowded) irregularity: <span class="n">20–25%</span>; <b>severe/extreme</b>: <span class="n">~15%</span>. <span class="chip">Ch1 Fig 1.9, p6</span></li>
+    <li>Lower arch is <b>more</b> crowded than upper at every severity, and worsens into adulthood. <span class="chip">Ch1 p6</span></li>
+  </ul>
+  <div class="hook">"<b>Half aligned, 15% bad</b>" — half the kids are fine; ~1 in 7 is severe.</div>
+</div>
+
+<!-- AP -->
+<div class="card">
+  <h2>Anteroposterior — Class II / III</h2>
+  <ul>
+    <li>Normal overjet = <span class="n">2 mm</span>. Overjet ≥5 mm (≈ Class II): <span class="n">22%</span> children → <span class="n">13%</span> youth → <span class="n">9%</span> adults. <span class="chip">Ch1 Fig 1.12, p7</span></li>
+    <li>Only <span class="n">~one-third</span> have ideal AP incisor relationship; another third only mildly increased. <span class="chip">Ch1 Fig 1.12</span></li>
+    <li><b>International:</b> Class II ~<span class="n">25%</span> of Danish children; Class III <span class="n">3–5%</span> Japan, <span class="n">~2%</span> China (+ 2–3% pseudo-Class III). <span class="chip">Ch1 p8</span></li>
+    <li>Class II → more common in <b>White / Black</b>; Class III → more common in <b>Mexican-American / Black</b>. <span class="chip">Ch1 Fig 1.11</span></li>
+  </ul>
+  <div class="hook">Increased overjet (Class II) is <b>much</b> more prevalent than reverse overjet (Class III).</div>
+</div>
+
+<!-- VERTICAL -->
+<div class="card">
+  <h2>Vertical — deep bite / open bite</h2>
+  <ul>
+    <li>Normal overbite = <span class="n">2 mm</span>. About <span class="n">half</span> the population has ideal vertical. <span class="chip">Ch1 Fig 1.13</span></li>
+    <li><b>Deep bite is much more prevalent than open bite.</b> Deep bites lessen with age; open bites stay stable. <span class="chip">Ch1 p7</span></li>
+    <li>Severe deep bite ~<span class="n">2×</span> as common in Whites; open bite &gt;3 mm more common in Blacks. <span class="chip">Ch1 Fig 1.11</span></li>
+    <li>Significant deep bites affect <span class="n">~20%</span> of patients. <span class="chip">Ch11</span></li>
+  </ul>
+  <div class="hook">"<b>Deep beats open</b>" — and deep bite is a <b>White</b> trait, open bite a <b>Black</b> trait.</div>
+</div>
+
+<!-- TRANSVERSE + DIASTEMA -->
+<div class="card">
+  <h2>Transverse (crossbite) &amp; diastema</h2>
+  <ul>
+    <li>Posterior crossbite: <span class="n">7–8%</span> of US population — <span class="n">7.1%</span> in children 8–11, 8% youth, 9% adults. <span class="chip">Ch1 p6 · Ch11</span></li>
+    <li>Crossbite differs little between racial/ethnic groups. <span class="chip">Ch1 Fig 1.11</span></li>
+    <li>Midline diastema &gt;2 mm: <span class="n">26%</span> of US children; persists in <span class="n">&gt;6%</span> of youth/adults. <span class="chip">Ch1 p6</span></li>
+    <li>Blacks are <span class="n">&gt;2×</span> as likely to have a diastema as Whites/Mexican-Americans. <span class="chip">Ch1 p6</span></li>
+    <li>Spontaneous closure most likely if diastema is <span class="n">&lt;2 mm</span> (closes as canines erupt). <span class="chip">Ch1 Fig 1.5</span></li>
+  </ul>
+  <div class="hook">Crossbite ≈ <b>7%</b> (kids) and diastema = <b>26%</b> (kids) — both from the same NHANES kid group.</div>
+</div>
+
+<!-- ANOMALIES -->
+<div class="card">
+  <h2>Dental anomalies — extra / missing / impacted</h2>
+  <ul>
+    <li><b>Supernumerary teeth:</b> <span class="n">90%</span> are in the <b>anterior maxilla</b> (mesiodens = most common). <span class="chip">Ch11 p~290</span></li>
+    <li><b>Maxillary canine</b> ectopic eruption / impaction: <span class="n">1–2%</span> range. <span class="chip">Ch11 p~410</span></li>
+    <li>Most-often-missing (evolutionary): <b>3rd molars</b>, then <b>maxillary lateral incisors</b> &amp; <b>mandibular 2nd premolars</b>. <span class="chip">Ch1 Fig 1.16</span></li>
+    <li>Serial mixed-dentition problems (ectopic/impacted/missing) affect <span class="n">&lt;4%</span> of the mixed-dentition population. <span class="chip">Ch11</span></li>
+    <li>Early loss of one primary canine → midline shift only <span class="n">1.3 mm</span> vs 1.0 mm normal (<b>not</b> clinically significant). <span class="chip">Ch11 (Christensen)</span></li>
+  </ul>
+  <div class="hook">"<b>90% supernumeraries up front</b>, <b>1–2% canines stuck</b>" — both maxillary anterior problems.</div>
+</div>
+
+<!-- CLEFT / CRANIOFACIAL -->
+<div class="card">
+  <h2>Cleft &amp; craniofacial</h2>
+  <ul>
+    <li>Orofacial clefts = the <b>most common</b> congenital defect of the head/neck. <span class="chip">Ch5</span></li>
+    <li>Cleft palate: <span class="n">1 in 700</span> births; cleft lip &amp; palate (CLP): <span class="n">1 in 1600</span> (US). <span class="chip">Ch5</span></li>
+    <li>Clefts: <span class="n">30%</span> syndromic, <span class="n">70%</span> unknown origin. <span class="chip">Ch5</span></li>
+    <li><b>Craniosynostosis:</b> <span class="n">1 / 2200</span> births, <span class="n">25%</span> syndromic. <span class="chip">Ch5</span></li>
+    <li><b>Pierre Robin Sequence:</b> <span class="n">60%</span> are syndromic (Stickler most common). <span class="chip">Ch5</span></li>
+  </ul>
+  <div class="hook">"<b>700 / 1600 · 30% syndromic</b>" — and Robin flips it: <b>60%</b> syndromic.</div>
+</div>
+
+<!-- TRAUMA / TMD -->
+<div class="card">
+  <h2>Trauma &amp; TMD</h2>
+  <ul>
+    <li>Permanent incisor trauma: <span class="n">15–18%</span> of youth aged 12–18. <span class="chip">Ch1 p10</span></li>
+    <li>~<span class="n">1 in 3</span> chance of injury to a protruding incisor (overjet &gt;5 mm + incompetent lips). <span class="chip">Ch1 Fig 1.18</span></li>
+    <li>Previous trauma + age &lt;9 → risk of re-injury is <span class="n">8.4×</span> higher → retract incisors. <span class="chip">Ch1 p10</span></li>
+    <li><b>TMD</b> present in <span class="n">5–30%</span> (depends on symptoms counted); moderate malocclusion in <span class="n">50–75%</span>. <span class="chip">Ch1 p10</span></li>
+    <li>Malocclusion–TMD correlation is weak: only <span class="n">0.3–0.4</span> → orthodontics is rarely the primary TMD treatment. <span class="chip">Ch1 p10</span></li>
+  </ul>
+  <div class="hook">"<b>1-in-3 protruding incisor, 8.4× if re-hit young</b>." TMD link is <b>weak (0.3–0.4)</b>.</div>
+</div>
+
+<!-- HABITS -->
+<div class="card">
+  <h2>Habits</h2>
+  <ul>
+    <li>Habit appliances (e.g. crib) extinguish thumb-sucking in <span class="n">85–90%</span> of cases. <span class="chip">Ch11</span></li>
+  </ul>
+</div>
+
+<!-- ROOT RESORPTION -->
+<div class="card">
+  <h2>Root resorption (orthodontic)</h2>
+  <ul>
+    <li><b>Maxillary incisors — especially the lateral — have the greatest risk.</b> Mandibular teeth resorb far less. <span class="chip">Ch8 p290</span></li>
+    <li><b>Severe (grade 3) resorption</b> hits only <span class="n">~3%</span> of maxillary central &amp; lateral incisors — but <b>moderate</b> change is common. <span class="chip">Ch8 Table 8.5</span></li>
+  </ul>
+  <div class="tscroll">
+  <table>
+    <tr><th>Tooth (200 pts)</th><th>0<br>none</th><th>1<br>blunting</th><th>2<br>moderate</th><th>3<br>severe</th></tr>
+    <tr><td>Max central incisor</td><td>8%</td><td>45%</td><td class="n">44%</td><td class="n">3%</td></tr>
+    <tr><td>Max lateral incisor</td><td>14%</td><td>47%</td><td class="n">37%</td><td class="n">3%</td></tr>
+    <tr><td>Max 2nd premolar</td><td>51%</td><td>45%</td><td>4%</td><td>0.5%</td></tr>
+    <tr><td>Mand central incisor</td><td>16%</td><td>63%</td><td>20%</td><td>0.5%</td></tr>
+    <tr><td>Mand 2nd premolar</td><td>55%</td><td>38%</td><td>6%</td><td>0.5%</td></tr>
+  </table>
+  </div>
+  <ul>
+    <li><b>Grades:</b> 0 = none · 1 = slight apical blunting · 2 = moderate · 3 = severe (&gt;⅓ of root). <span class="chip">Fig 8.28</span></li>
+    <li><b>Risk factors (odds ratio) — Table 8.6:</b> lingual-plate approximation <span class="n">20×</span> ≫ maxillary surgery <span class="n">8×</span> &gt; torque <span class="n">4.5×</span> &gt; mandibular surgery <span class="n">3.6×</span>. <span class="chip">Ch8 Table 8.6</span></li>
+    <li>“<b>Lingual-plate approximation largely explains the other risk factors</b>” — driving a root against the cortical plate is the real mechanism. <span class="chip">Ch8</span></li>
+    <li><b>Related — white-spot demineralization:</b> <span class="n">36%</span> of patients had ≥1 visible lesion on a maxillary incisor; risk ↑ with young age. <span class="chip">Ch8 p294</span></li>
+  </ul>
+  <div class="hook">Same victim every time — the <b>maxillary lateral incisor</b>. "<b>Torque a root into the cortical plate = a prescription for resorption.</b>"</div>
+</div>
+
+<!-- TRAP BOX -->
+<div class="trap">
+  <h2>⚠ Confusable traps — don't swap these</h2>
+  <ul>
+    <li><b>Class II by age 22 / 13 / 9</b> (falls) vs <b>crossbite 7 / 8 / 9</b> (rises) — opposite directions with age.</li>
+    <li><b>Diastema 26%</b> (children, &gt;2 mm) vs persists <b>&gt;6%</b> (adults) — don't quote 26% for adults.</li>
+    <li><b>Cleft palate 1/700</b> vs <b>CLP 1/1600</b> vs <b>craniosynostosis 1/2200</b> — three different denominators.</li>
+    <li><b>Clefts 30% syndromic</b> but <b>Pierre Robin 60% syndromic</b> — Robin is the high one.</li>
+    <li><b>Supernumerary 90% anterior maxilla</b> vs <b>canine impaction 1–2%</b> — don't merge the figures.</li>
+    <li><b>Normal occlusion ~⅓ (35%)</b> vs <b>known-cause ≤5%</b> — the 5% is of the malocclusion group, not the whole population.</li>
+    <li>Normal <b>overjet 2 mm</b> = normal <b>overbite 2 mm</b> — same number, different plane.</li>
+  </ul>
+</div>
+
+<div class="src-note" style="text-align:center;margin-top:14px">
+  Proffit &amp; Fields, <i>Contemporary Orthodontics</i>, 7th ed. — Ch 1 (Epidemiology, NHANES III) · Ch 5 (Etiology) · Ch 11 (Mixed dentition).
+</div>
+
+</div>
+</body>
+</html>
