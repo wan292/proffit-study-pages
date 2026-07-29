@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impacted Maxillary Canine — Ericson &amp; Kurol in 5 Minutes</title>
+<style>
+  :root{
+    --bg:#1a1410; --card:#241c16; --card2:#2b211a; --line:#3a2c20;
+    --txt:#ece3d6; --muted:#b6a690; --amber:#f0b95e; --amber2:#e0a44c;
+    --green:#9ccb86; --red:#ec8a6a; --redbg:#2f1c15; --greenbg:#1d2417;
+    --blue:#7fb4d6; --bluebg:#16222b;
+    --chip:#37291d;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    line-height:1.5;-webkit-text-size-adjust:100%}
+  .wrap{max-width:840px;margin:0 auto;padding:22px 16px 80px}
+  .navbar{position:sticky;top:0;z-index:30;background:rgba(26,20,16,.96);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    padding:9px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .navbar a.home{color:var(--muted);font-size:13px;border:1px solid #4a3826;
+    padding:5px 11px;border-radius:8px;text-decoration:none}
+  .navbar a.home:hover{color:var(--amber);border-color:var(--amber)}
+  .navbar .nbt{font-size:13px;color:var(--amber2);font-weight:600}
+  .navbar .clock{margin-left:auto;font-size:12px;color:var(--muted);
+    border:1px solid #4a3826;border-radius:20px;padding:3px 10px;white-space:nowrap}
+  header{text-align:center;margin-bottom:8px}
+  h1{font-size:1.55rem;margin:.2em 0 .1em;color:var(--amber);letter-spacing:.3px}
+  .sub{color:var(--muted);font-size:.9rem;margin-bottom:4px}
+  .src-note{font-size:.78rem;color:var(--muted);font-style:italic}
+  h2{font-size:1.05rem;color:var(--amber2);margin:0 0 10px;
+    border-bottom:1px solid var(--line);padding-bottom:6px}
+  h3{font-size:.92rem;color:var(--txt);margin:14px 0 4px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:16px 16px 8px;margin:16px 0;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+  .big{background:linear-gradient(150deg,#2c2118,#241b14);border-color:#4a3826}
+  ul{margin:6px 0 12px;padding-left:0;list-style:none}
+  li{margin:7px 0;padding-left:18px;position:relative}
+  li::before{content:"•";color:var(--amber);position:absolute;left:2px;top:-1px}
+  ol{margin:6px 0 12px;padding-left:22px}
+  ol li{padding-left:2px}
+  ol li::before{content:none}
+  .n{color:var(--amber);font-weight:700}
+  .chip{display:inline-block;background:var(--chip);color:var(--muted);
+    font-size:.7rem;border-radius:20px;padding:1px 8px;margin-left:5px;
+    vertical-align:middle;white-space:nowrap}
+  .chip.p{background:#3d2f13;color:#f0c986}
+  .chip.ek{background:#1f2f3a;color:#9ecbe8}
+  .chip.lit{background:#2f2438;color:#c4a9dd}
+  .hook{color:var(--green);font-size:.86rem;margin:2px 0 12px 18px;font-style:italic}
+  .hook::before{content:"🧠 ";font-style:normal}
+  table{width:100%;border-collapse:collapse;margin:6px 0 10px;font-size:.9rem}
+  .tscroll{overflow-x:auto}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:center}
+  th{background:var(--card2);color:var(--amber2);font-weight:600}
+  td:first-child{text-align:left;color:var(--txt)}
+  .up{color:var(--red)} .down{color:var(--green)}
+  .trap{background:var(--redbg);border:1px solid #6a3a28;border-radius:12px;
+    padding:14px 16px 6px;margin:18px 0}
+  .trap h2{color:var(--red);border-color:#6a3a28}
+  .trap li::before{content:"⚠";color:var(--red);font-size:.85rem}
+  .eb{background:var(--bluebg);border:1px solid #2f4a5c;border-radius:12px;
+    padding:14px 16px 6px;margin:18px 0}
+  .eb h2{color:var(--blue);border-color:#2f4a5c}
+  .eb li::before{content:"⌕";color:var(--blue)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:4px 0 12px}
+  .stat{background:var(--card2);border-radius:10px;padding:10px 8px;text-align:center}
+  .stat .v{font-size:1.5rem;font-weight:800;color:var(--amber);display:block}
+  .stat .l{font-size:.74rem;color:var(--muted)}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;
+    font-size:.74rem;color:var(--muted);margin:10px 0 0}
+  .legend span b{font-weight:600}
+  .papers{font-size:.87rem}
+  .papers li::before{content:"§";color:var(--amber2)}
+  .papers .yr{color:var(--amber);font-weight:700}
+  .papers .jr{color:var(--muted);font-style:italic}
+  .secfig{background:var(--card2);border-radius:12px;padding:14px 10px 6px;margin:10px 0 14px}
+  .secfig svg{display:block;width:100%;height:auto;max-width:520px;margin:0 auto}
+  .cap{font-size:.76rem;color:var(--muted);text-align:center;margin:6px 8px 4px}
+  .verdict{background:var(--greenbg);border:1px solid #3d5c33;border-radius:10px;
+    padding:10px 14px 2px;margin:10px 0}
+  .verdict li::before{content:"✓";color:var(--green)}
+  @media(max-width:520px){.grid{grid-template-columns:1fr 1fr}h1{font-size:1.3rem}}
+</style>
+</head>
+<body>
+<div class="navbar">
+  <a class="home" href="https://wan292.github.io/proffit-study-pages/index.html" target="_blank">← All Chapters</a>
+  <span class="nbt">Impacted Maxillary Canine</span>
+  <span class="clock">⏱ ~5 min read</span>
+</div>
+<div class="wrap">
+<header>
+  <h1>The Impacted Maxillary Canine</h1>
+  <div class="sub">The <b>Ericson &amp; Kurol</b> canon in 5 minutes · prevalence → diagnosis → prognosis</div>
+  <div class="src-note">Every figure is tagged by source. Amber = stated in Proffit 7th (exam-safe). Blue = from the original Ericson&nbsp;&amp;&nbsp;Kurol paper. Violet = wider literature — verify before quoting a number.</div>
+  <div class="legend">
+    <span><b class="chip p">Proffit</b> in the textbook</span>
+    <span><b class="chip ek">E&amp;K</b> the primary paper</span>
+    <span><b class="chip lit">lit</b> wider literature</span>
+  </div>
+</header>
+
+<!-- TLDR -->
+<div class="card big">
+  <h2>The 60-second version</h2>
+  <div class="grid">
+    <div class="stat"><span class="v">1.7%</span><span class="l">of children have an ectopic / impacted maxillary canine</span></div>
+    <div class="stat"><span class="v">2:1</span><span class="l">female : male</span></div>
+    <div class="stat"><span class="v">~85%</span><span class="l">of these canines are <b>palatal</b>, not buccal</span></div>
+    <div class="stat"><span class="v">12% → 38%</span><span class="l">lateral-incisor resorption: plain film vs CT</span></div>
+    <div class="stat"><span class="v">78%</span><span class="l">normalise after extracting the primary canine</span></div>
+    <div class="stat"><span class="v">91% / 64%</span><span class="l">success if canine overlaps &lt;½ vs &gt;½ of the lateral root</span></div>
+  </div>
+  <ul>
+    <li><b>The one big idea.</b> Ericson &amp; Kurol's lasting contribution is that the damage an ectopic canine does to the neighbouring incisor roots is <b>massively under-diagnosed on conventional radiographs</b>. Move from plain films to CT and the resorption rate on lateral incisors jumps from <span class="n">~12%</span> to <span class="n">38%</span> — and most of what you were missing is <i>severe</i>. <span class="chip ek">E&amp;K 1987 · 2000</span></li>
+    <li><b>The clinical trigger.</b> At about <b>age 10</b>, a maxillary primary canine that is <b>not mobile</b> with <b>no palpable facial bulge</b> = suspect ectopic eruption. That is the whole screening test. <span class="chip p">Proffit Ch11</span></li>
+    <li><b>The intervention.</b> Extract the primary canine — and the earlier and less mesially displaced the permanent canine, the better it works. <span class="chip p">Proffit Ch11</span></li>
+  </ul>
+  <div class="hook">"<b>Palpate at 10, extract the C, and trust CT over the panoramic.</b>"</div>
+</div>
+
+<!-- THE PAPERS -->
+<div class="card">
+  <h2>Which papers, actually?</h2>
+  <p style="font-size:.87rem;color:var(--muted);margin:0 0 8px">
+    "The Ericson &amp; Kurol article" is really a run of four landmark papers from the same two Swedish authors. Proffit cites them without giving the year, so know what each one contributed.
+  </p>
+  <ul class="papers">
+    <li><span class="yr">1986</span> — <i>Longitudinal study and analysis of clinical supervision of maxillary canine eruption.</i> <span class="jr">Community Dent Oral Epidemiol</span><br>→ gave the <b>prevalence</b> and established <b>palpation from age 10–11</b> as the screening method.</li>
+    <li><span class="yr">1987</span> — <i>Radiographic examination of ectopically erupting maxillary canines.</i> <span class="jr">Am J Orthod Dentofacial Orthop</span><br>→ gave the <b>sector</b> and <b>alpha-angle</b> measurements on the panoramic; found resorption in ~12% of laterals.</li>
+    <li><span class="yr">1988</span> — <i>Early treatment of palatally erupting maxillary canines by extraction of the primary canines.</i> <span class="jr">Eur J Orthod</span><br>→ the famous <b>78%</b> interceptive-extraction paper. <b>This is the one usually meant by "the Ericson &amp; Kurol article."</b></li>
+    <li><span class="yr">2000</span> — <i>Resorption of incisors after ectopic eruption of maxillary canines: a CT study.</i> <span class="jr">Angle Orthod</span><br>→ the <b>under-diagnosis</b> paper: CT reveals far more resorption than plain films.</li>
+  </ul>
+</div>
+
+<!-- HOW COMMON -->
+<div class="card">
+  <h2>1 · How common is it? — the percentages</h2>
+  <div class="tscroll">
+  <table>
+    <tr><th>Figure</th><th>Value</th><th>Source</th></tr>
+    <tr><td>Ectopic eruption / impaction of the maxillary canine</td><td class="n">1.7%</td><td>E&amp;K 1986</td></tr>
+    <tr><td>Same figure as Proffit states it</td><td class="n">1–2%</td><td>Proffit Ch11</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;— in females</td><td class="n">1.17%</td><td>E&amp;K 1986</td></tr>
+    <tr><td>&nbsp;&nbsp;&nbsp;— in males</td><td class="n">0.51%</td><td>E&amp;K 1986</td></tr>
+    <tr><td>Palatal vs buccal displacement</td><td class="n">~85% : 15%</td><td>lit (N. European)</td></tr>
+    <tr><td>Bilateral</td><td class="n">~⅓ of cases</td><td>lit</td></tr>
+  </table>
+  </div>
+  <ul>
+    <li>The maxillary canine is the <b>second most commonly impacted tooth</b>, after the third molar. <span class="chip lit">lit</span></li>
+    <li><b>Sex ratio ≈ 2:1 female</b> — falls straight out of the 1.17% vs 0.51% split. <span class="chip ek">E&amp;K 1986</span></li>
+    <li>The palatal-vs-buccal split <b>varies a lot between populations</b> (series report anywhere from ~60% to ~85% palatal). Proffit gives no percentage — if an exam demands one, quote the range, not a single number. <span class="chip lit">lit</span></li>
+    <li>Associated findings — <b>small or missing lateral incisors</b>, and dental anomalies cluster because they are <b>genetically related</b> (Proffit's stated reason for taking a full panoramic first). <span class="chip p">Proffit Ch11</span></li>
+    <li><b>Laterality clue:</b> palatal — but <i>not</i> buccal — impaction is more prevalent on the side with <b>delayed dental development</b>. Earlier eruption of the opposite canine shoves the incisors toward the delayed side and steals its space. <span class="chip p">Proffit Ch3</span></li>
+  </ul>
+  <div class="hook">"<b>1.7% overall · girls twice as often · mostly palatal.</b>" Compare with Proffit's own rounding: <b>1–2%</b>.</div>
+</div>
+
+<!-- DIAGNOSIS -->
+<div class="card">
+  <h2>2 · Diagnosis</h2>
+
+  <h3>The clinical screen — this is the examinable bit</h3>
+  <ul>
+    <li>At approximately <b>age 10</b>: if the maxillary primary canine is <b>not mobile</b> <i>and</i> there is <b>no observable or palpable facial canine bulge</b> → consider ectopic eruption. <span class="chip p">Proffit Ch11</span></li>
+    <li>Two things can then go wrong, and they are not the same problem: <b>(1)</b> impaction of the canine, <b>(2)</b> resorption of the permanent lateral and/or central incisor roots. <span class="chip p">Proffit Ch11</span></li>
+  </ul>
+
+  <h3>The imaging ladder</h3>
+  <ol>
+    <li><b>Panoramic first</b> — get the whole picture, because dental anomalies are genetically related and travel together. <span class="chip p">Proffit Ch11</span></li>
+    <li><b>Then small field-of-view CBCT</b>, for root resorption and true 3-D canine position. <span class="chip p">Proffit Ch11 (7th ed)</span></li>
+    <li><b>Parallax</b> is the 2-D alternative — horizontal tube shift (two periapicals, SLOB rule) or the right-angle technique (periapical + occlusal). See the <a href="lectures.html" style="color:var(--amber2)">radiology lecture page</a>. <span class="chip lit">lit</span></li>
+  </ol>
+
+  <h3>The Ericson &amp; Kurol panoramic measurements</h3>
+  <p style="font-size:.87rem;color:var(--muted);margin:0 0 4px">Three variables off a single panoramic — this is what made the 1987 paper stick.</p>
+  <div class="secfig">
+    <svg viewBox="0 0 520 190" role="img" aria-label="Ericson and Kurol sector diagram: five sectors defined relative to the long axis of the lateral incisor root">
+      <!-- sector wedges -->
+      <g stroke="#3a2c20" stroke-width="1">
+        <rect x="40"  y="30" width="80" height="110" fill="#1d2417"/>
+        <rect x="120" y="30" width="80" height="110" fill="#232a18"/>
+        <rect x="200" y="30" width="80" height="110" fill="#2e2a17"/>
+        <rect x="280" y="30" width="80" height="110" fill="#332415"/>
+        <rect x="360" y="30" width="90" height="110" fill="#2f1c15"/>
+      </g>
+      <!-- sector labels -->
+      <g font-size="13" font-weight="700" text-anchor="middle" fill="#ece3d6">
+        <text x="80"  y="52">1</text>
+        <text x="160" y="52">2</text>
+        <text x="240" y="52">3</text>
+        <text x="320" y="52">4</text>
+        <text x="405" y="52">5</text>
+      </g>
+      <!-- lateral incisor -->
+      <g>
+        <path d="M108 138 L112 92 Q120 78 128 92 L132 138 Z" fill="#3a2c20" stroke="#b6a690" stroke-width="1.4"/>
+        <line x1="120" y1="138" x2="120" y2="66" stroke="#f0b95e" stroke-width="1.6" stroke-dasharray="4 3"/>
+      </g>
+      <text x="120" y="158" font-size="10.5" text-anchor="middle" fill="#b6a690">lateral incisor</text>
+      <text x="120" y="170" font-size="10.5" text-anchor="middle" fill="#f0b95e">long axis = sector 1|2 line</text>
+      <!-- distal / mesial arrows -->
+      <text x="70"  y="182" font-size="10.5" text-anchor="middle" fill="#9ccb86">← distal · better</text>
+      <text x="400" y="182" font-size="10.5" text-anchor="middle" fill="#ec8a6a">mesial · worse →</text>
+      <!-- canine crown marker -->
+      <g>
+        <circle cx="250" cy="112" r="15" fill="#2b211a" stroke="#e0a44c" stroke-width="1.8"/>
+        <text x="250" y="117" font-size="11" font-weight="700" text-anchor="middle" fill="#f0b95e">3</text>
+      </g>
+      <text x="250" y="146" font-size="10.5" text-anchor="middle" fill="#b6a690">canine cusp tip</text>
+    </svg>
+    <div class="cap">Sector = where the canine <b>cusp tip</b> sits mesiodistally, read against the long axis of the erupted lateral incisor. Sectors&nbsp;1–2 lie distal to that axis; 3–5 progressively mesial. Higher sector = worse prognosis.</div>
+  </div>
+  <ul>
+    <li><b>Sector (1–5)</b> — mesiodistal position of the canine crown relative to the lateral incisor's long axis. <span class="chip ek">E&amp;K 1987</span></li>
+    <li><b>Alpha angle (α)</b> — angulation of the canine's long axis to the midline. Roughly: <b>&lt;20–30° favourable</b>, <b>&gt;30° unfavourable</b>. <span class="chip ek">E&amp;K 1987</span> <span class="chip lit">threshold varies by study</span></li>
+    <li><b>Vertical height</b> — distance of the cusp tip from the occlusal plane. Higher = worse. <span class="chip ek">E&amp;K 1987</span></li>
+  </ul>
+  <div class="hook">Three axes: <b>how mesial (sector) · how tipped (α) · how high (vertical)</b>. All three bad = don't bother intercepting, go straight to expose-and-traction.</div>
+</div>
+
+<!-- RESORPTION / UNDER-DIAGNOSIS -->
+<div class="card">
+  <h2>3 · The under-diagnosis story — resorption of the incisors</h2>
+  <p style="font-size:.87rem;color:var(--muted);margin:0 0 8px">
+    This is the finding the article is famous for. The 2000 CT study looked at 107 children (9–15 y, mean 12.5) with 156 ectopically erupting canines.
+  </p>
+  <div class="tscroll">
+  <table>
+    <tr><th>Finding</th><th>On plain films<br><span style="font-weight:400;font-size:.8rem">E&amp;K 1987</span></th><th>On CT<br><span style="font-weight:400;font-size:.8rem">E&amp;K 2000</span></th></tr>
+    <tr><td><b>Lateral</b> incisors with root resorption</td><td class="n">~12%</td><td class="n">38%</td></tr>
+    <tr><td><b>Central</b> incisors with root resorption</td><td>—</td><td class="n">9%</td></tr>
+    <tr><td>Ectopic canine <i>in contact with</i> the lateral root</td><td>—</td><td class="n">93%</td></tr>
+    <tr><td>Ectopic canine <i>in contact with</i> the central root</td><td>—</td><td class="n">19%</td></tr>
+  </table>
+  </div>
+  <ul>
+    <li><b>CT detects roughly 50% more resorption</b> than intraoral films. That gap <i>is</i> the paper's message. <span class="chip ek">E&amp;K 2000</span></li>
+    <li><b>And what you miss is the bad stuff.</b> Of the resorbed lateral incisors: <span class="n">31%</span> slight · <span class="n">9%</span> moderate · <span class="n">60%</span> <b>severe, with pulpal involvement</b>. <span class="chip ek">E&amp;K 2000</span></li>
+    <li>Most resorption sits in the <b>middle third</b> of the root (~82%), not the apex — which is exactly why a 2-D film, superimposing the canine crown over that zone, hides it. <span class="chip ek">E&amp;K 1987</span></li>
+    <li>Lateral-incisor resorption is about <b>3× more common in girls</b>. <span class="chip ek">E&amp;K 1987</span></li>
+    <li>Proffit's consequence: <b>if resorption is already happening, interceptive extraction is no longer the answer</b> — surgically expose the canine and apply orthodontic traction. <span class="chip p">Proffit Ch11, Fig 11.44 / 11.47</span></li>
+  </ul>
+  <div class="hook">"<b>12 on film, 38 on CT — and 60% of what you find is severe.</b>" The panoramic is a screening tool, not a resorption tool.</div>
+</div>
+
+<!-- PROGNOSIS -->
+<div class="card">
+  <h2>4 · Prognosis — does extracting the primary canine work?</h2>
+  <p style="font-size:.87rem;color:var(--muted);margin:0 0 8px">
+    The 1988 paper: 46 ectopic canines in 35 children, aged 10.0–13.0 (mean 11.4), all with no or minor space loss, reviewed 6-monthly.
+  </p>
+  <div class="grid">
+    <div class="stat"><span class="v">78%</span><span class="l">normalised overall (36 of 46)</span></div>
+    <div class="stat"><span class="v">91%</span><span class="l">if overlap &lt; ½ the lateral root</span></div>
+    <div class="stat"><span class="v">64%</span><span class="l">if overlap &gt; ½ the lateral root</span></div>
+  </div>
+  <ul>
+    <li><b>The Proffit-stated version — memorise this one.</b> If the permanent canine crown overlaps <b>less than half</b> of the lateral incisor root on the panoramic, there is an excellent chance — <span class="n">91%</span> — that the eruption path normalises after extracting the primary canine. If <b>more than half</b> the lateral root is overlapped, that falls to <span class="n">64%</span>. <span class="chip p">Proffit Ch11</span></li>
+    <li><b>The paper's own headline:</b> <span class="n">78%</span> (36/46) of palatally erupting canines converted to a normal path after extraction of the primary canine — 23 improved by <b>6 months</b>, another 13 by <b>12 months</b>. <span class="chip ek">E&amp;K 1988</span></li>
+    <li><b>If nothing has changed at 12 months, it isn't going to.</b> That is the practical review interval. <span class="chip ek">E&amp;K 1988</span></li>
+    <li>A more advanced sector or a more mesially inclined canine <b>reduces</b> the chance of eruption after extraction — prognosis is a gradient, not a yes/no. <span class="chip ek">E&amp;K 1987/88</span></li>
+    <li>Proffit's separate, softer claim: early extraction of primary canines <b>decreases the chance of canine impaction</b>, but you need a <b>lingual arch</b> to hold the space and keep the non-extraction option open. <span class="chip p">Proffit Ch12</span></li>
+  </ul>
+  <div class="hook">"<b>Half a lateral root is the line.</b> Less than half → 91%. More than half → 64%. Overall → 78%."</div>
+</div>
+
+<!-- WHEN INTERCEPTION FAILS -->
+<div class="card">
+  <h2>5 · When interception fails — expose and pull</h2>
+  <ul>
+    <li><b>Space first.</b> With a canine already impacted and the primary C recently lost, the first step is to <b>provide / open / maintain the space</b> — before any heavy wire, before any traction. <span class="chip p">Proffit Ch15</span></li>
+    <li><b>Then expose.</b> Ideally the fixed appliance is <b>already in place</b> before exposure so force can be applied immediately; otherwise start active movement <b>no later than 2–3 weeks</b> post-op. <span class="chip p">Proffit Ch15</span></li>
+    <li><b>Labial canine</b> → apically repositioned flap so <b>attached gingiva</b> is carried to the crown; a very high labial canine can use the <b>tunnel</b> method. Needs a heavy stabilising archwire (<b>≥18-mil round steel</b>, preferably rectangular) at operation. <span class="chip p">Proffit Ch15</span></li>
+    <li><b>Palatal canine</b> → <b>open exposure</b> is fine (heavy palatal mucosa isn't a problem), and because open exposure often produces downward drift, immediate active traction can be <b>deferred</b> in many of these. <span class="chip p">Proffit Ch15</span></li>
+    <li><b>Incomplete root?</b> Delaying traction to a palatally impacted canine with an incomplete root is recommended — but favourable spontaneous movement <b>rarely</b> occurs once root formation is complete. <span class="chip p">Proffit Ch15</span></li>
+    <li><b>Attachment:</b> a <b>button or eyelet</b> (7th ed wording), not a bracket, and never a wire ligature round the crown — that costs periodontal attachment and invites ankylosis. <span class="chip p">Proffit Ch15</span></li>
+    <li><b>Mechanics:</b> auxiliary NiTi overlaid on a stabilising base arch is the most efficient method. <span class="chip p">Proffit Ch15</span></li>
+  </ul>
+  <div class="verdict">
+    <ul>
+      <li><b>Sequence to recite:</b> open the space → expose → bond a button → traction with an auxiliary NiTi over a heavy base wire, starting immediately (or ≤2–3 weeks).</li>
+    </ul>
+  </div>
+</div>
+
+<!-- EVIDENCE CAVEAT -->
+<div class="eb">
+  <h2>⌕ How strong is this evidence, really?</h2>
+  <ul>
+    <li>The 1988 interceptive-extraction study was a <b>case series of 35 children with no control group</b>. Some palatal canines correct on their own, so the untreated comparison is exactly what's missing.</li>
+    <li>Later systematic reviews do find a higher proportion of successful eruption after primary-canine extraction, but with <b>wide confidence intervals</b> — the effect is real-looking, not nailed down.</li>
+    <li>The <b>1.7%</b> prevalence is from a <b>Swedish</b> population. Palatal-vs-buccal proportions in particular do not transfer cleanly to other populations.</li>
+    <li>For an exam, quote the numbers as above. For a viva, knowing <b>why</b> the 1988 design is weak is the mark that separates a pass from a good pass.</li>
+  </ul>
+</div>
+
+<!-- TRAP BOX -->
+<div class="trap">
+  <h2>⚠ Confusable traps — don't swap these</h2>
+  <ul>
+    <li><b>91% / 64%</b> (Proffit's overlap-of-the-lateral-root criterion) vs <b>78%</b> (the paper's overall success). Same study family, three different denominators — don't merge them.</li>
+    <li><b>12% vs 38%</b> resorption — 12% is the <b>plain-film</b> figure (1987), 38% is the <b>CT</b> figure (2000). Quoting 12% as "the" resorption rate is the classic error.</li>
+    <li><b>38% laterals vs 9% centrals</b> — and <b>93% contact</b> with the lateral root. <i>Contact</i> is not <i>resorption</i>; nearly all of them touch, only about a third resorb.</li>
+    <li><b>Age 10 = palpation.</b> Not age 8, not age 12. The trigger is <b>immobile primary canine + no palpable bulge</b>.</li>
+    <li><b>Sector 1 is the good end.</b> Higher sector number = more mesial = worse. Reversing the scale is an easy mark to lose.</li>
+    <li><b>Delay traction</b> for a palatal canine with an <b>incomplete</b> root — but <b>don't</b> wait once the root is complete. Proffit's wording is a conditional, not a blanket rule.</li>
+    <li><b>Canine impaction 1–2%</b> vs <b>supernumerary 90% in the anterior maxilla</b> — two different maxillary anterior facts, frequently conflated in the recall bank.</li>
+    <li>In an OPG showing <b>both a mesiodens and impacted canines</b>, past papers key the <b>mesiodens</b> as the most clinically significant finding — but in the case with <b>retained primary canines + supernumerary</b>, the <b>impacted canines</b> are the key feature. Read which case you're in. <span class="chip lit">recall bank</span></li>
+  </ul>
+</div>
+
+<div class="src-note" style="text-align:center;margin-top:14px">
+  Proffit &amp; Fields, <i>Contemporary Orthodontics</i>, 7th ed. — Ch 3 (eruption sequence) · Ch 11 (maxillary canines, Figs 11.44/11.46/11.47) · Ch 12 (serial extraction) · Ch 15 (impacted-tooth surgery &amp; mechanics).<br>
+  Primary literature — Ericson &amp; Kurol: <i>Community Dent Oral Epidemiol</i> 1986;14:172–6 · <i>Am J Orthod Dentofacial Orthop</i> 1987;91:483–92 · <i>Eur J Orthod</i> 1988;10:283–95 · <i>Angle Orthod</i> 2000;70:415–23.
+</div>
+
+</div>
+</body>
+</html>
